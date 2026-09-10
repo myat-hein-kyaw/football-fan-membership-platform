@@ -1,0 +1,4 @@
+**/dbconfig.php
+**/.env
+**/uploads/
+*.zip
