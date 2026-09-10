@@ -1,17 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "grouped_epl_fans";
-
-// Create a function to establish a database connection
-function connectToDatabase($servername, $username, $password, $dbname) {
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    return $conn;
-}
+require_once __DIR__ . '/../../../../dbconfig.php';
 
 // Check the session status
 if (session_status() == PHP_SESSION_NONE) {
@@ -48,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Use the database connection function and update function
-        $conn = connectToDatabase($servername, $username, $password, $dbname);
         updatePaymentStatus($conn, $paymentId, $status, $message);
 
         // Close the database connection

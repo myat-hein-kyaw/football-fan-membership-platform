@@ -3,17 +3,9 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Include your database connection file
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "grouped_epl_fans";
+require_once __DIR__ . '/../../session/app.php';
 
-// Check the connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once __DIR__ . '/../../../../dbconfig.php';
 
 // Fetch data from the payment_type table
 $sql = "SELECT * FROM payment_type ORDER BY paymenttypeid DESC";
@@ -67,7 +59,7 @@ if (!$result) {
                                 $rowNumber = 1;
                                 while ($row = $result->fetch_assoc()) {
                                     // Build the full URL for the image
-                                    $fullImagePath = $row['image'];
+                                    $fullImagePath = $_SESSION['project-path'] . '/' . ltrim($row['image'], '/');
                                 ?>
                                     <tr>
                                         <th scope="row"><?php echo $rowNumber; ?></th>
