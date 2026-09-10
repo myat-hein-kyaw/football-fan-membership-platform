@@ -59,7 +59,7 @@ new_grouped_epl_fans/
 ├── live_football_match.php # Live match-related page
 ├── dbconfig.example.php    # Database configuration template
 └── .gitignore              # Files excluded from Git
-
+```
 ## Screenshots
 
 ### Homepage
